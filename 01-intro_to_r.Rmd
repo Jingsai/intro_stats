@@ -10,8 +10,6 @@
 :::
 
 
-### Test from Jingsai 
-
 ## Introduction {#intror-intro}
 
 Welcome to R! This chapter will walk you through everything you need to know to get started using R.
