@@ -2,11 +2,38 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
+      collapse: section
+      scroll_highlight: true
+      
       before: |
         <li><a href="./">Introduction to Statistics: an integrated textbook and workbook using R</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
+      
+    toolbar:
+      position: fixed
+    edit : null
+    download: null
+    search:
+      engine: lunr # or fuse
+      # options to control/tune search engine behavior (for
+      # fuse.js, refer to https://fusejs.io/api/options.html)
+      options: null
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
+    sharing:
+      facebook: false
+      github: false
+      twitter: false
+      linkedin: false
+      weibo: false
+      instapaper: false
+      vk: false
+      whatsapp: false
+      all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
+    info: true
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
@@ -18,6 +45,6 @@ bookdown::bs4_book:
   css: style.css
   df_print: paged
   repo:
-    base: https://github.com/VectorPosse/intro_stats
+    base: https://github.com/Jingsai/intro_stats
     branch: main
 

@@ -1,5 +1,4 @@
 intror
-test-from-jingsai
 intror-intro
 intror-whatisr
 intror-rstudio

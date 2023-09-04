@@ -23,7 +23,7 @@
 <meta name="author" content="Sean Raleigh, Westminster College (Salt Lake City, UT)" />
 
 
-<meta name="date" content="2023-09-03" />
+<meta name="date" content="2023-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,6 +41,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -150,7 +151,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="intror.html"><a href="intror.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a>
 <ul>
 <li class="chapter" data-level="" data-path="intror.html"><a href="intror.html#functions-introduced-in-this-chapter"><i class="fa fa-check"></i>Functions introduced in this chapter:</a></li>
-<li class="chapter" data-level="1.0.1" data-path="intror.html"><a href="intror.html#test-from-jingsai"><i class="fa fa-check"></i><b>1.0.1</b> Test from Jingsai</a></li>
 <li class="chapter" data-level="1.1" data-path="intror.html"><a href="intror.html#intror-intro"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
 <li class="chapter" data-level="1.2" data-path="intror.html"><a href="intror.html#intror-whatisr"><i class="fa fa-check"></i><b>1.2</b> What is R?</a></li>
 <li class="chapter" data-level="1.3" data-path="intror.html"><a href="intror.html#intror-rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
@@ -1677,6 +1677,7 @@ p \approx 0.16?
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1689,8 +1690,8 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -1703,10 +1704,7 @@ gitbook.start({
 "family": "sans",
 "size": 2
 },
-"edit": {
-"link": null,
-"text": null
-},
+"edit": null,
 "history": {
 "link": null,
 "text": null
@@ -1715,14 +1713,19 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["intro_stats.pdf", "intro_stats.epub"],
+"download": null,
 "search": {
-"engine": "fuse",
+"engine": "lunr",
 "options": null
 },
 "toc": {
-"collapse": "subsection"
-}
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"info": true
 });
 });
 </script>
