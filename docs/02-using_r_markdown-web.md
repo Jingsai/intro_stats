@@ -192,16 +192,14 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.2     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 The output here consists of a bunch of information generated when trying to load the package. These are not errors, even though one section is labeled "Conflicts". Usually, errors appear with the word "Error", so it's typically clear when something just didn't work. Also note that once you've loaded a package, you don't need to load it again until you restart your R session. For example, if you go back and try to run the code chunk above one more time, the output will disappear. That's because `tidyverse` is already loaded, so the second "run" doesn't actually generate output anymore.
@@ -213,10 +211,6 @@ Okay, let's do something interesting now. We'll revisit the `penguins` data set 
 library(palmerpenguins)
 ```
 
-```
-## Warning: package 'palmerpenguins' was built under R version 4.3.1
-```
-
 Let's see what happens when we try to run multiple commands in one code chunk:
 
 
@@ -225,21 +219,35 @@ Let's see what happens when we try to run multiple commands in one code chunk:
 head(penguins)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["island"],"name":[2],"type":["fct"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["fct"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"Torgersen","3":"39.1","4":"18.7","5":"181","6":"3750","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.5","4":"17.4","5":"186","6":"3800","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"40.3","4":"18.0","5":"195","6":"3250","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"36.7","4":"19.3","5":"193","6":"3450","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.3","4":"20.6","5":"190","6":"3650","7":"male","8":"2007"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 6 × 8
+##   species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+##   <fct>   <fct>              <dbl>         <dbl>       <int>   <int> <fct> <int>
+## 1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+## 2 Adelie  Torgersen           39.5          17.4         186    3800 fema…  2007
+## 3 Adelie  Torgersen           40.3          18           195    3250 fema…  2007
+## 4 Adelie  Torgersen           NA            NA            NA      NA <NA>   2007
+## 5 Adelie  Torgersen           36.7          19.3         193    3450 fema…  2007
+## 6 Adelie  Torgersen           39.3          20.6         190    3650 male   2007
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
 
 ```r
 tail(penguins)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["island"],"name":[2],"type":["fct"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["fct"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Chinstrap","2":"Dream","3":"45.7","4":"17.0","5":"195","6":"3650","7":"female","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"55.8","4":"19.8","5":"207","6":"4000","7":"male","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"43.5","4":"18.1","5":"202","6":"3400","7":"female","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"49.6","4":"18.2","5":"193","6":"3775","7":"male","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"50.8","4":"19.0","5":"210","6":"4100","7":"male","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"50.2","4":"18.7","5":"198","6":"3775","7":"female","8":"2009"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 6 × 8
+##   species   island bill_length_mm bill_depth_mm flipper_le…¹ body_…² sex    year
+##   <fct>     <fct>           <dbl>         <dbl>        <int>   <int> <fct> <int>
+## 1 Chinstrap Dream            45.7          17            195    3650 fema…  2009
+## 2 Chinstrap Dream            55.8          19.8          207    4000 male   2009
+## 3 Chinstrap Dream            43.5          18.1          202    3400 fema…  2009
+## 4 Chinstrap Dream            49.6          18.2          193    3775 male   2009
+## 5 Chinstrap Dream            50.8          19            210    4100 male   2009
+## 6 Chinstrap Dream            50.2          18.7          198    3775 fema…  2009
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
 
 ```r
 str(penguins)
@@ -268,22 +276,36 @@ Nevertheless, it will be good practice and a good habit to get into to put multi
 head(penguins)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["island"],"name":[2],"type":["fct"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["fct"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"Torgersen","3":"39.1","4":"18.7","5":"181","6":"3750","7":"male","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.5","4":"17.4","5":"186","6":"3800","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"40.3","4":"18.0","5":"195","6":"3250","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"36.7","4":"19.3","5":"193","6":"3450","7":"female","8":"2007"},{"1":"Adelie","2":"Torgersen","3":"39.3","4":"20.6","5":"190","6":"3650","7":"male","8":"2007"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 6 × 8
+##   species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+##   <fct>   <fct>              <dbl>         <dbl>       <int>   <int> <fct> <int>
+## 1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+## 2 Adelie  Torgersen           39.5          17.4         186    3800 fema…  2007
+## 3 Adelie  Torgersen           40.3          18           195    3250 fema…  2007
+## 4 Adelie  Torgersen           NA            NA            NA      NA <NA>   2007
+## 5 Adelie  Torgersen           36.7          19.3         193    3450 fema…  2007
+## 6 Adelie  Torgersen           39.3          20.6         190    3650 male   2007
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
 
 
 ```r
 tail(penguins)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["island"],"name":[2],"type":["fct"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["fct"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Chinstrap","2":"Dream","3":"45.7","4":"17.0","5":"195","6":"3650","7":"female","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"55.8","4":"19.8","5":"207","6":"4000","7":"male","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"43.5","4":"18.1","5":"202","6":"3400","7":"female","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"49.6","4":"18.2","5":"193","6":"3775","7":"male","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"50.8","4":"19.0","5":"210","6":"4100","7":"male","8":"2009"},{"1":"Chinstrap","2":"Dream","3":"50.2","4":"18.7","5":"198","6":"3775","7":"female","8":"2009"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 6 × 8
+##   species   island bill_length_mm bill_depth_mm flipper_le…¹ body_…² sex    year
+##   <fct>     <fct>           <dbl>         <dbl>        <int>   <int> <fct> <int>
+## 1 Chinstrap Dream            45.7          17            195    3650 fema…  2009
+## 2 Chinstrap Dream            55.8          19.8          207    4000 male   2009
+## 3 Chinstrap Dream            43.5          18.1          202    3400 fema…  2009
+## 4 Chinstrap Dream            49.6          18.2          193    3775 male   2009
+## 5 Chinstrap Dream            50.8          19            210    4100 male   2009
+## 6 Chinstrap Dream            50.2          18.7          198    3775 fema…  2009
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
 
 
 ```r

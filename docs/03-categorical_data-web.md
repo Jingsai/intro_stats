@@ -56,16 +56,14 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.2     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 ```r
@@ -83,10 +81,6 @@ library(janitor)
 
 ```r
 library(palmerpenguins)
-```
-
-```
-## Warning: package 'palmerpenguins' was built under R version 4.3.1
 ```
 
 
@@ -203,11 +197,12 @@ The `table` command stops being convenient if you want proportions instead of co
 tabyl(penguins, species)
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["percent"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"152","3":"0.4418605"},{"1":"Chinstrap","2":"68","3":"0.1976744"},{"1":"Gentoo","2":"124","3":"0.3604651"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##    species   n   percent
+##     Adelie 152 0.4418605
+##  Chinstrap  68 0.1976744
+##     Gentoo 124 0.3604651
+```
 
 Now you get both counts and proportions. Note that in the output above, it's a little misleading to call the last column "percent". These are actually proportions, and we would have to multiply by 100 to get percentages.
 
@@ -219,11 +214,13 @@ tabyl(penguins, species) %>%
   adorn_totals()
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["percent"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"152","3":"0.4418605","_rn_":"1"},{"1":"Chinstrap","2":"68","3":"0.1976744","_rn_":"2"},{"1":"Gentoo","2":"124","3":"0.3604651","_rn_":"3"},{"1":"Total","2":"344","3":"1.0000000","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##    species   n   percent
+##     Adelie 152 0.4418605
+##  Chinstrap  68 0.1976744
+##     Gentoo 124 0.3604651
+##      Total 344 1.0000000
+```
 
 We'll always include the totals at the bottom.
 
@@ -235,11 +232,12 @@ tabyl(penguins, species) %>%
     adorn_pct_formatting()
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["percent"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Adelie","2":"152","3":"44.2%"},{"1":"Chinstrap","2":"68","3":"19.8%"},{"1":"Gentoo","2":"124","3":"36.0%"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##    species   n percent
+##     Adelie 152   44.2%
+##  Chinstrap  68   19.8%
+##     Gentoo 124   36.0%
+```
 
 Again, we'll also include `adorn_totals` so that we get the column totals.
 
@@ -250,11 +248,13 @@ tabyl(penguins, species) %>%
     adorn_pct_formatting()
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["percent"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Adelie","2":"152","3":"44.2%","_rn_":"1"},{"1":"Chinstrap","2":"68","3":"19.8%","_rn_":"2"},{"1":"Gentoo","2":"124","3":"36.0%","_rn_":"3"},{"1":"Total","2":"344","3":"100.0%","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##    species   n percent
+##     Adelie 152   44.2%
+##  Chinstrap  68   19.8%
+##     Gentoo 124   36.0%
+##      Total 344  100.0%
+```
 
 The syntax above looks a little confusing with the unusual `%>%` symbols everywhere. You will learn more about that weird set of symbols in a later chapter. For now, you can just copy and paste this code and make any necessary changes to the tibble and/or variables names as needed.
 
@@ -344,14 +344,6 @@ ggplot(penguins, aes(x = species, y = ..prop.., group = 1)) +
     geom_bar()
 ```
 
-```
-## Warning: The dot-dot notation (`..prop..`) was deprecated in ggplot2 3.4.0.
-## ℹ Please use `after_stat(prop)` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-```
-
 <img src="03-categorical_data-web_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 These bar charts are the graphical analogues of a frequency table and a relative frequency table, respectively.
@@ -397,11 +389,13 @@ tabyl(penguins, sex, species) %>%
   adorn_totals()
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["sex"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Adelie"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Chinstrap"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Gentoo"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"73","3":"34","4":"58","_rn_":"1"},{"1":"male","2":"73","3":"34","4":"61","_rn_":"2"},{"1":"NA","2":"6","3":"0","4":"5","_rn_":"3"},{"1":"Total","2":"152","3":"68","4":"124","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##     sex Adelie Chinstrap Gentoo
+##  female     73        34     58
+##    male     73        34     61
+##    <NA>      6         0      5
+##   Total    152        68    124
+```
 
 Each column is a group, and our question is whether the distribution of sexes in each column is similar.
 
@@ -428,11 +422,13 @@ tabyl(penguins, sex, species) %>%
     adorn_percentages("col")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["sex"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Adelie"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Chinstrap"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Gentoo"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"0.48026316","3":"0.5","4":"0.46774194","_rn_":"1"},{"1":"male","2":"0.48026316","3":"0.5","4":"0.49193548","_rn_":"2"},{"1":"NA","2":"0.03947368","3":"0.0","4":"0.04032258","_rn_":"3"},{"1":"Total","2":"1.00000000","3":"1.0","4":"1.00000000","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##     sex     Adelie Chinstrap     Gentoo
+##  female 0.48026316       0.5 0.46774194
+##    male 0.48026316       0.5 0.49193548
+##    <NA> 0.03947368       0.0 0.04032258
+##   Total 1.00000000       1.0 1.00000000
+```
 
 If we actually want percentages, we need one more line of code. This command---`adorn_pct_formatting`---is the same as we used before with frequency tables.
 
@@ -444,11 +440,13 @@ tabyl(penguins, sex, species) %>%
     adorn_pct_formatting()
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["sex"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Adelie"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Chinstrap"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Gentoo"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"female","2":"48.0%","3":"50.0%","4":"46.8%","_rn_":"1"},{"1":"male","2":"48.0%","3":"50.0%","4":"49.2%","_rn_":"2"},{"1":"NA","2":"3.9%","3":"0.0%","4":"4.0%","_rn_":"3"},{"1":"Total","2":"100.0%","3":"100.0%","4":"100.0%","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##     sex Adelie Chinstrap Gentoo
+##  female  48.0%     50.0%  46.8%
+##    male  48.0%     50.0%  49.2%
+##    <NA>   3.9%      0.0%   4.0%
+##   Total 100.0%    100.0% 100.0%
+```
 
 Now we can see that each column adds up to 100%. In other words, each species is now on equal footing, and only the distribution of sexes within each group matters.
 
@@ -760,11 +758,14 @@ penguin_species_table <- tibble(
 penguin_species_table
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"152"},{"1":"Chinstrap","2":"68"},{"1":"Gentoo","2":"124"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 3 × 2
+##   species   count
+##   <chr>     <dbl>
+## 1 Adelie      152
+## 2 Chinstrap    68
+## 3 Gentoo      124
+```
 
 Basically, the `tibble` command creates a new tibble. Then each column of data must be entered manually as a "vector" using the `c` to group all the data values together for each column. Be careful about the placement of quotation marks, commas, and parentheses.
 
@@ -850,11 +851,14 @@ We'll continue with our example `penguin_species_table`, which we'll reprint her
 penguin_species_table
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"152"},{"1":"Chinstrap","2":"68"},{"1":"Gentoo","2":"124"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 3 × 2
+##   species   count
+##   <chr>     <dbl>
+## 1 Adelie      152
+## 2 Chinstrap    68
+## 3 Gentoo      124
+```
 
 From this table, we know what the raw data for this variable should look like: there should be 152 rows that say "Adelie," 68 rows that say "Chinstrap," and 124 rows that say "Gentoo." It would be very annoying, though, to make that whole tibble by hand. Fortunately, there are R tools that will create it for us.
 
@@ -866,11 +870,12 @@ penguin_species_tabyl <- as_tabyl(penguin_species_table)
 penguin_species_tabyl
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelie","2":"152"},{"1":"Chinstrap","2":"68"},{"1":"Gentoo","2":"124"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##    species count
+##     Adelie   152
+##  Chinstrap    68
+##     Gentoo   124
+```
 
 The hero of the day is the function `uncount` from the `tidyr` package:
 
@@ -881,11 +886,22 @@ penguin_species_raw <- penguin_species_tabyl %>%
 penguin_species_raw
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Adelie"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Chinstrap"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"},{"1":"Gentoo"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 344 × 1
+##    species
+##    <chr>  
+##  1 Adelie 
+##  2 Adelie 
+##  3 Adelie 
+##  4 Adelie 
+##  5 Adelie 
+##  6 Adelie 
+##  7 Adelie 
+##  8 Adelie 
+##  9 Adelie 
+## 10 Adelie 
+## # … with 334 more rows
+```
 
 Click through the rows of this table and you'll see that it's exactly what we wanted: "Adelie" is repeated 152 times, "Chinstrap" is repeated 68 times, and "Gentoo" is repeated 124 times. Neat!
 
@@ -915,11 +931,13 @@ penguin_species_sex_table <- tibble(
 penguin_species_sex_table
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Adelie"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Chinstrap"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Gentoo"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"73","3":"34","4":"58"},{"1":"male","2":"73","3":"34","4":"61"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 2 × 4
+##   sex    Adelie Chinstrap Gentoo
+##   <chr>   <dbl>     <dbl>  <dbl>
+## 1 female     73        34     58
+## 2 male       73        34     61
+```
 
 Once again, we'll want to turn this tibble into a tabyl:
 
@@ -929,11 +947,11 @@ penguin_species_sex_tabyl <- as_tabyl(penguin_species_sex_table)
 penguin_species_sex_tabyl
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Adelie"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Chinstrap"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Gentoo"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"73","3":"34","4":"58"},{"1":"male","2":"73","3":"34","4":"61"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+##     sex Adelie Chinstrap Gentoo
+##  female     73        34     58
+##    male     73        34     61
+```
 
 In order for the `uncount` function to work correctly, we need to have all the counts in a single column, but since this is a contingency table, our counts are spread out across several columns. To solve this problem, we'll need to "pivot" the columns, turning them into rows. The command is called `pivot_longer`. (There is also a `pivot_wider` command that turns rows into columns, but we won't need that one.)
 
@@ -943,11 +961,17 @@ penguin_species_sex_tabyl %>%
   pivot_longer(cols = c("Adelie", "Chinstrap", "Gentoo"))
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["value"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"Adelie","3":"73"},{"1":"female","2":"Chinstrap","3":"34"},{"1":"female","2":"Gentoo","3":"58"},{"1":"male","2":"Adelie","3":"73"},{"1":"male","2":"Chinstrap","3":"34"},{"1":"male","2":"Gentoo","3":"61"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 6 × 3
+##   sex    name      value
+##   <chr>  <chr>     <dbl>
+## 1 female Adelie       73
+## 2 female Chinstrap    34
+## 3 female Gentoo       58
+## 4 male   Adelie       73
+## 5 male   Chinstrap    34
+## 6 male   Gentoo       61
+```
 
 If we want a little more control over the names of the newly created columnds, we can add those as follows:
 
@@ -959,11 +983,17 @@ penguin_species_sex_tabyl %>%
                values_to = "count")
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["species"],"name":[2],"type":["chr"],"align":["left"]},{"label":["count"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"Adelie","3":"73"},{"1":"female","2":"Chinstrap","3":"34"},{"1":"female","2":"Gentoo","3":"58"},{"1":"male","2":"Adelie","3":"73"},{"1":"male","2":"Chinstrap","3":"34"},{"1":"male","2":"Gentoo","3":"61"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 6 × 3
+##   sex    species   count
+##   <chr>  <chr>     <dbl>
+## 1 female Adelie       73
+## 2 female Chinstrap    34
+## 3 female Gentoo       58
+## 4 male   Adelie       73
+## 5 male   Chinstrap    34
+## 6 male   Gentoo       61
+```
 
 
 Now our data is in the form that `uncount` knows how to deal with. And indeed, we can assemble all these steps together into a pipeline. First, we should build the tibble. Then, we should turn the tibble into a tabyl (sorry), then `pivot` the tabyl, and finally `uncount` to get back to the raw data. Finally, we should store the result as a new tibble. 
@@ -987,11 +1017,22 @@ penguin_species_sex_table %>%
 penguin_species_sex_raw
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["species"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Adelie"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Chinstrap"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"female","2":"Gentoo"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Adelie"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Chinstrap"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"},{"1":"male","2":"Gentoo"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```
+## # A tibble: 333 × 2
+##    sex    species
+##    <chr>  <chr>  
+##  1 female Adelie 
+##  2 female Adelie 
+##  3 female Adelie 
+##  4 female Adelie 
+##  5 female Adelie 
+##  6 female Adelie 
+##  7 female Adelie 
+##  8 female Adelie 
+##  9 female Adelie 
+## 10 female Adelie 
+## # … with 323 more rows
+```
 
 Indeed, this new tibble looks just like how we wanted it to look.
 

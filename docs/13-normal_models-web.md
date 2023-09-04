@@ -44,24 +44,18 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.2     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 ```r
 library(mosaic)
-```
-
-```
-## Warning: package 'mosaic' was built under R version 4.3.1
 ```
 
 ```
@@ -588,7 +582,7 @@ ggplot(SnowGR, aes(x = Total)) +
 ```
 
 ```
-## Warning: Removed 1 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 1 rows containing non-finite values (stat_bin).
 ```
 
 <img src="13-normal_models-web_files/figure-html/unnamed-chunk-24-1.png" width="672" />
@@ -603,11 +597,11 @@ ggplot(SnowGR, aes(sample = Total)) +
 ```
 
 ```
-## Warning: Removed 1 rows containing non-finite values (`stat_qq()`).
+## Warning: Removed 1 rows containing non-finite values (stat_qq).
 ```
 
 ```
-## Warning: Removed 1 rows containing non-finite values (`stat_qq_line()`).
+## Warning: Removed 1 rows containing non-finite values (stat_qq_line).
 ```
 
 <img src="13-normal_models-web_files/figure-html/unnamed-chunk-25-1.png" width="672" />

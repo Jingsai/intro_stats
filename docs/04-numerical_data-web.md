@@ -44,24 +44,18 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.2     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.0
-## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 ```r
 library(palmerpenguins)
-```
-
-```
-## Warning: package 'palmerpenguins' was built under R version 4.3.1
 ```
 
 
@@ -486,7 +480,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-21-1.png" width="672" />
@@ -526,7 +520,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-22-1.png" width="672" />
@@ -544,7 +538,7 @@ ggplot(penguins, aes(x = bill_length_mm)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-23-1.png" width="672" />
@@ -634,7 +628,7 @@ ggplot(penguins, aes(y = bill_length_mm, x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-27-1.png" width="672" />
@@ -661,7 +655,7 @@ ggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-28-1.png" width="672" />
@@ -691,7 +685,7 @@ ggplot(penguins, aes(y = body_mass_g, x = species)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_boxplot()`).
+## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-29-1.png" width="672" />
@@ -712,7 +706,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-30-1.png" width="672" />
@@ -729,7 +723,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-31-1.png" width="672" />
@@ -744,7 +738,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-32-1.png" width="672" />
@@ -782,15 +776,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
-## ℹ Please use `after_stat(density)` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-```
-
-```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-33-1.png" width="672" />
@@ -831,7 +817,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-36-1.png" width="672" />
@@ -849,7 +835,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-37-1.png" width="672" />
@@ -864,7 +850,7 @@ ggplot(penguins, aes(x = body_mass_g)) + geom_histogram(binwidth = 250, boundary
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-38-1.png" width="672" />
@@ -886,7 +872,7 @@ ggplot(penguins, aes(y = bill_length_mm, x = bill_depth_mm)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-39-1.png" width="672" />
@@ -908,7 +894,7 @@ ggplot(penguins, aes(y = bill_length_mm, x = bill_depth_mm)) +
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values (`geom_point()`).
+## Warning: Removed 2 rows containing missing values (geom_point).
 ```
 
 <img src="04-numerical_data-web_files/figure-html/unnamed-chunk-40-1.png" width="672" />
