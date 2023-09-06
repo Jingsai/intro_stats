@@ -33,7 +33,7 @@ There are no new packages used in this chapter.
 
 Check the upper-right corner in RStudio to make sure you're in your `intro_stats` project. Then click on the following link to download this chapter as an R notebook file (`.Rmd`).
 
-<a href = "https://vectorposse.github.io/intro_stats/chapter_downloads/05-manipulating_data.Rmd" download>https://vectorposse.github.io/intro_stats/chapter_downloads/05-manipulating_data.Rmd</a>
+<a href = "https://jingsai.github.io/intro_stats/chapter_downloads/05-manipulating_data.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/05-manipulating_data.Rmd</a>
 
 Once the file is downloaded, move it to your project folder in RStudio and open it there.
 
@@ -59,7 +59,7 @@ The file we'll import is a random sample from all the commercial domestic flight
 We use the `read_csv` command to import a CSV file. In this case, we're grabbing the file from a web page where the file is hosted. If you have a file on your computer, you can also put the file into your project directory and import it from there. Put the URL (for a web page) or the filename (for a file in your project directory) in quotes inside the `read_csv`command. We also need to assign the output to a tibble, so we've called it `hf` for "Houston flights".
 
 ```{r}
-hf <- read_csv("https://vectorposse.github.io/intro_stats/data/hf.csv")
+hf <- read_csv("https://jingsai.github.io/intro_stats/data/hf.csv")
 ```
 
 ```{r}

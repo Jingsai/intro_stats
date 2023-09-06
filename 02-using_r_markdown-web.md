@@ -1,34 +1,25 @@
----
-title: "2. Using R Markdown"
-author: "Put your name here"
-date: "Put the date here"
-output:
-  html_notebook:
-    toc: yes
-    toc_float: yes
----
+# Using R Markdown {#rmark}
 
 <!-- Please don't mess with the next few lines! -->
-<style>h5{font-size:2em;color:#0000FF}h6{font-size:1.5em;color:#0000FF}div.answer{margin-left:5%;border:1px solid #0000FF;border-left-width:10px;padding:25px} div.summary{background-color:rgba(30,144,255,0.1);border:3px double #0000FF;padding:25px}</style>`r options(scipen=999)`<p style="color:#ffffff">`r intToUtf8(c(50,46,48))`</p>
-
+<style>h5{font-size:2em;color:#0000FF}h6{font-size:1.5em;color:#0000FF}div.answer{margin-left:5%;border:1px solid #0000FF;border-left-width:10px;padding:25px} div.summary{background-color:rgba(30,144,255,0.1);border:3px double #0000FF;padding:25px}</style><p style="color:#ffffff">2.0</p>
 <!-- Please don't mess with the previous few lines! -->
 
 ::: {.summary}
 
-### Functions introduced in this chapter
+### Functions introduced in this chapter {-}
 
 No R functions are introduced here, but R Markdown syntax is explained.
 
 :::
 
 
-## Introduction
+## Introduction {#rmark-intro}
 
 This chapter will teach you how to use R Markdown to create quality documents that incorporate text and R code seamlessly.
 
 First, though, let's make sure you are set up in your project in RStudio.
 
-### Are you in your project?
+### Are you in your project? {#rmark-project}
 
 If you followed the directions at the end of the last chapter, you should have created a project called `intro_stats`. Let's make sure you're in that project.
 
@@ -36,7 +27,7 @@ If you followed the directions at the end of the last chapter, you should have c
 
 If you're not in the `intro_stats` project, click on whatever it does say in the upper right corner (probably `Project: (None)`). You can click "Open Project" but it's likely that the `intro_stats` project appears in the drop-down menu in your list of recently accessed projects. So click on the project `intro_stats`.
 
-### Install new packages
+### Install new packages {#rmark-install}
 
 If you are using RStudio Workbench, you do not need to install any packages. (Any packages you need should already be installed by the server administrators.)
 
@@ -47,7 +38,7 @@ install.packages("rmarkdown")
 install.packages("tidyverse")
 ```
 
-### Download the R notebook file
+### Download the R notebook file {#rmark-download}
 
 You need to download this chapter as an R Notebook (`.Rmd`) file. Please click the following link to do so:
 
@@ -58,7 +49,7 @@ The file is now likely sitting in a Downloads folder on your machine (or whereve
 If you are reading this text online in the browser, be aware that there are several instructions below that won't make any sense because you're not looking at the plain text file with all the code in it. Much of the material in this book can be read and enjoyed online, but the real learning comes from downloading the chapter files (starting with Chapter 2---this one) and working through them in RStudio.
 
 
-## What is R Markdown?
+## What is R Markdown? {#rmark-whatis}
 
 The first question should really be, "What is Markdown?"
 
@@ -66,8 +57,13 @@ Markdown is a way of using plain text with simple characters to indicate formatt
 
 R Markdown is a special version of Markdown that also allows you to include R code alongside the text. Here's an example of a "code chunk":
 
-```{r}
+
+```r
 1 + 1
+```
+
+```
+## [1] 2
 ```
 
 Click the little dark green, right-facing arrow in the upper-right corner of the code chunk. (The icon I'm referring to is next to a faint gear icon and a lighter green icon with a downward-facing arrow.) When you "run" the code chunk like this, R produces output it. We'll say more about code chunks later in this document.
@@ -75,7 +71,7 @@ Click the little dark green, right-facing arrow in the upper-right corner of the
 This document---with text and code chunks together---is called an R Notebook file.
 
 
-## Previewing a document
+## Previewing a document {#rmark-previewing}
 
 There is a button in the toolbar right above the text that says "Preview". Go ahead and push it. See what happens.
 
@@ -84,12 +80,12 @@ Once the pretty output is generated, take a few moments to look back and forth b
 At first, you'll want to work back and forth between the R Notebook file and the HTML file to get used to how the formatting in the plain text file get translated to output in the HTML file. After a while, you will look at the HTML file less often and work mostly in the R Notebook file, only previewing when you are finished and ready to produce your final draft.
 
 
-## Literate programming
+## Literate programming {#rmark-literate}
 
 R Markdown is one way to implement a "literate programming" paradigm. The concept of literate programming was famously described by Donald Knuth, an eminent computer scientist. The idea is that computer programs should not appear in a sterile file that's full of hard-to-read, abstruse lines of computer code. Instead, functional computer code should appear interspersed with writing that explains the code.
 
 
-## Reproducible research
+## Reproducible research {#rmark-reproducible}
 
 One huge benefit of organizing your work into R Notebooks is that it makes your work *reproducible*. This means that anyone with access to your data and your R Notebook file should be able to re-create the exact same analysis you did.
 
@@ -98,7 +94,7 @@ This is a far cry from what generally happens in research. For example, if I do 
 Reproducibility should be a minimum prerequisite for all statistical analysis. Sadly, that is not the case in most of the research world. We are training you to be better.
 
 
-## Structure of an R Notebook
+## Structure of an R Notebook {#rmark-structure}
 
 Let's start from the top. Look at the very beginning of the plain R Notebook file. (If you're in RStudio, you are looking at the R Notebook file. If you are looking at the pretty HTML file, you'll need to go back to RStudio.) The section at the very top of the file that starts and ends with three hyphens is called the YAML header. (Google it if you really care why.) The title of the document appears already, but you'll need to substitute your name and today's date in the obvious places. **Scroll up and do that now.**
 
@@ -118,11 +114,11 @@ To be clear, the colorful answer boxes are not part of the standard R Markdown t
 
 We also have section headers throughout, which in the R Notebook file look like:
 
-## Section header
+## Section header {.unlisted .unnumbered}
 
 The hashtags are Markdown code for formatting headers. Additional hashtags will create subsections:
 
-### Not quite as big
+### Not quite as big {.unlisted .unnumbered}
 
 We could actually use a single number sign, but `#` makes a header as big as the title, which is too big. Therefore, we will prefer `##` for section headers and `###` for subsections.
 
@@ -133,7 +129,7 @@ Do you see the problem?
 Put a blank line before and after the line above that says "Is this a new section?" Preview one more time and make sure that the line now shows up as a proper section header.
 
 
-## Other formatting tricks
+## Other formatting tricks {#rmark-othertricks}
 
 You can make text *italic* or **bold** by using asterisks. (Don't forget to look at the HTML to see the result.)
 
@@ -165,7 +161,7 @@ We can make horizontal rules. There are lots of ways of doing this, but I prefer
 There are many more formatting tricks available. For a good resource on all R Markdown stuff, click on [this link](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) for a "cheat sheet". And note in the previous sentence the syntax for including hyperlinks in your document.^[You can also access cheat sheets through the main Help menu in RStudio.]
 
 
-## R code chunks
+## R code chunks {#rmark-codechunks}
 
 The most powerful feature of R Markdown is the ability to do data analysis right inside the document. This is accomplished by including R code chunks. An R code chunk doesn't just show you the R code in your output file; it also runs that code and generates output that appears right below the code chunk.
 
@@ -173,10 +169,15 @@ An R code chunk starts with three "backticks" followed by the letter r enclosed 
 
 In RStudio, click the little dark green, right-facing arrow in the upper-right corner of the code chunk below, just as you did earlier.
 
-```{r}
+
+```r
 # Here's some sample R code
 test <- c(1, 2, 3, 4)
 sum(test)
+```
+
+```
+## [1] 10
 ```
 
 After pushing the dark green arrow, you should notice that the output of the R code appeared like magic. If you preview the HTML output, you should see the same output appear. If you hover your mouse over the dark green arrow, you should see the words "Run Current Chunk". We'll call this the Run button for short.
@@ -185,25 +186,83 @@ After pushing the dark green arrow, you should notice that the output of the R c
 
 Typically, the first code chunk that appears in our document will load any packages we need. We will be using a package called `tidyverse` (which is really a collection of lots of different packages) throughout the course. We load it now. Click on the Run button (the dark green, right-facing arrow) in the code chunk below. 
 
-```{r}
+
+```r
 library(tidyverse)
+```
+
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
 ```
 
 The output here consists of a bunch of information generated when trying to load the package. These are not errors, even though one section is labeled "Conflicts". Usually, errors appear with the word "Error", so it's typically clear when something just didn't work. Also note that once you've loaded a package, you don't need to load it again until you restart your R session. For example, if you go back and try to run the code chunk above one more time, the output will disappear. That's because `tidyverse` is already loaded, so the second "run" doesn't actually generate output anymore.
 
 Okay, let's do something interesting now. We'll revisit the `penguins` data set we introduced in the previous chapter. Remember, though, that this data set also lives in a package that needs to be loaded. Run the code chunk below to load the `palmerpenguins` package:
 
-```{r}
+
+```r
 library(palmerpenguins)
 ```
 
 Let's see what happens when we try to run multiple commands in one code chunk:
 
 
-```{r}
+
+```r
 head(penguins)
+```
+
+```
+## # A tibble: 6 × 8
+##   species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+##   <fct>   <fct>              <dbl>         <dbl>       <int>   <int> <fct> <int>
+## 1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+## 2 Adelie  Torgersen           39.5          17.4         186    3800 fema…  2007
+## 3 Adelie  Torgersen           40.3          18           195    3250 fema…  2007
+## 4 Adelie  Torgersen           NA            NA            NA      NA <NA>   2007
+## 5 Adelie  Torgersen           36.7          19.3         193    3450 fema…  2007
+## 6 Adelie  Torgersen           39.3          20.6         190    3650 male   2007
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
+
+```r
 tail(penguins)
+```
+
+```
+## # A tibble: 6 × 8
+##   species   island bill_length_mm bill_depth_mm flipper_le…¹ body_…² sex    year
+##   <fct>     <fct>           <dbl>         <dbl>        <int>   <int> <fct> <int>
+## 1 Chinstrap Dream            45.7          17            195    3650 fema…  2009
+## 2 Chinstrap Dream            55.8          19.8          207    4000 male   2009
+## 3 Chinstrap Dream            43.5          18.1          202    3400 fema…  2009
+## 4 Chinstrap Dream            49.6          18.2          193    3775 male   2009
+## 5 Chinstrap Dream            50.8          19            210    4100 male   2009
+## 6 Chinstrap Dream            50.2          18.7          198    3775 fema…  2009
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
+
+```r
 str(penguins)
+```
+
+```
+## tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+##  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+##  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+##  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+##  $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+##  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
 ```
 
 If you're looking at this in RStudio, it's a bit of a mess. RStudio did its best to give you what you asked for, but there are three separate commands here. The first two (`head` and `tail`) print some of the data, so the first two boxes of output are tables showing you the head and the tail of the data. The next one (`str`) normally just prints some information to the Console. So RStudio gave you an R Console box with the output of this command.
@@ -212,30 +271,77 @@ If you look at the HTML file, you can see the situation isn't as bad. Each comma
 
 Nevertheless, it will be good practice and a good habit to get into to put multiple output-generating commands in their own R code chunks. Run the following code chunks and compare the output to the mess you saw above:
 
-```{r}
+
+```r
 head(penguins)
 ```
 
-```{r}
+```
+## # A tibble: 6 × 8
+##   species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+##   <fct>   <fct>              <dbl>         <dbl>       <int>   <int> <fct> <int>
+## 1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+## 2 Adelie  Torgersen           39.5          17.4         186    3800 fema…  2007
+## 3 Adelie  Torgersen           40.3          18           195    3250 fema…  2007
+## 4 Adelie  Torgersen           NA            NA            NA      NA <NA>   2007
+## 5 Adelie  Torgersen           36.7          19.3         193    3450 fema…  2007
+## 6 Adelie  Torgersen           39.3          20.6         190    3650 male   2007
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
+
+
+```r
 tail(penguins)
 ```
 
-```{r}
+```
+## # A tibble: 6 × 8
+##   species   island bill_length_mm bill_depth_mm flipper_le…¹ body_…² sex    year
+##   <fct>     <fct>           <dbl>         <dbl>        <int>   <int> <fct> <int>
+## 1 Chinstrap Dream            45.7          17            195    3650 fema…  2009
+## 2 Chinstrap Dream            55.8          19.8          207    4000 male   2009
+## 3 Chinstrap Dream            43.5          18.1          202    3400 fema…  2009
+## 4 Chinstrap Dream            49.6          18.2          193    3775 male   2009
+## 5 Chinstrap Dream            50.8          19            210    4100 male   2009
+## 6 Chinstrap Dream            50.2          18.7          198    3775 fema…  2009
+## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g
+```
+
+
+```r
 str(penguins)
+```
+
+```
+## tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+##  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+##  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+##  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+##  $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+##  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
 ```
 
 This won't look any different in the HTML file, but it sure looks a lot cleaner in RStudio.
 
 What about the two lines of the first code chunk we ran above?
 
-```{r}
+
+```r
 test <- c(1, 2, 3, 4)
 sum(test)
 ```
 
+```
+## [1] 10
+```
+
 Should these two lines be separated into two code chunks? If you run it, you'll see only one piece of output. That's because the line `test <- c(1, 2, 3, 4)` works invisibly in the background. The vector `test` gets assigned, but no output is produced. Try it and see (push the Run button):
 
-```{r}
+
+```r
 test <- c(1, 2, 3, 4)
 ```
 
@@ -243,9 +349,14 @@ So while there's no harm in separating these lines and putting them in their own
 
 Suppose we define a new variable called `test2` in a code chunk. FOR PURPOSES OF THIS EXERCISE, DO NOT HIT THE RUN BUTTON YET! But do go look at the HTML file.
 
-```{r}
+
+```r
 test2 <- c("a", "b", "c")
 test2
+```
+
+```
+## [1] "a" "b" "c"
 ```
 
 The first line defines `test2` invisibly. The second line asks R to print the value of `test2`, but in the HTML file we see no output. That's because we have not run the code chunk yet. DON'T HIT THE RUN BUTTON YET!
@@ -270,14 +381,20 @@ Now go back to the Environment tab and find the icon with the little broom on it
 
 Clearing out your environment can be useful from time to time. Maybe you've been working on a chapter for a while and you've tried a bunch of stuff that didn't work, or you went back and changed a bunch of code. Eventually, all that junk accumulates in your Global Environment and it can mess up your R Notebook. For example, let's define a variable called `my_variable`.
 
-```{r}
+
+```r
 my_variable <- 42
 ```
 
 Then, let's do some calculation with `my_variable`.
 
-```{r}
+
+```r
 my_variable * 2
+```
+
+```
+## [1] 84
 ```
 
 Perhaps later you decide you don't really need `my_variable`. Put a hashtag in front of the code `my_variable <- 42` to comment it out so that it will no longer run, but don't touch the next code chunk where you multiply it by 2. Now try running the code chunk with `my_variable * 2` again. Note that `my_variable` is still sitting in your Global Environment, so you don't get any error messages. R can still see and access `my_variable`.
@@ -289,28 +406,33 @@ It's best to make sure all your code chunks will run when loaded from a clean R 
 To get rid of the error above, uncomment the line `my_variable <- 42` by removing the hashtag you added earlier.
 
 
-## Inline R commands
+## Inline R commands {#rmark-inline}
 
 You don't need a standalone R code chunk to do computations. One neat feature is the ability to use R to calculate things right in the middle of your text.
 
 Here's an example. Suppose we wanted to compute the mean body mass (in grams) for the penguins in the `penguins` data set. We could do this:
 
-```{r}
+
+```r
 mean(penguins$body_mass_g, na.rm = TRUE)
+```
+
+```
+## [1] 4201.754
 ```
 
 (The `na.rm = TRUE` part is necessary because two of the penguins are missing body mass data. More on missing data in future chapters.)
 
 But we can also do this inline by using backticks and putting the letter `r` inside the first backtick. Go to the HTML document to see how the following sentence appears:
 
-The mean body mass for penguins in the `penguins` data set is `r mean(penguins$body_mass_g, na.rm = TRUE)` grams.
+The mean body mass for penguins in the `penguins` data set is 4201.754386 grams.
 
 You can (and should) check to make sure your inline R code is working by checking the HTML output, but you don't necessarily need to go to the HTML file to find out. In RStudio, click so that the cursor is somewhere in the middle of the inline code chunk in the paragraph above. Now type Ctrl-Enter or Cmd-Enter (PC or Mac respectively). A little box should pop up that shows you the answer!
 
 Notice that in addition to the inline R command that calculated the mean, I also enclosed `penguins` in backticks to make it stand out in the output. I'll continue to do that for all computer commands and R functions. But to be clear, putting a word in backticks is just a formatting trick. If you want inline R code, you also need the letter `r` followed by a space inside the backticks.
 
 
-## Copying and pasting
+## Copying and pasting {#rmark-copypaste}
 
 In future chapters, you will be shown how to run statistical analyses using R. Each chapter will give extensive explanations of the statistical concepts and demonstrations of the necessary R code. Afterwards, there will be one or more exercises that ask you to apply your new-found knowledge to run similar analyses on your own with different data.
 
@@ -328,12 +450,12 @@ In order to be successful in these chapters, you must do the following:
 One final note about copying and pasting. Sometimes, people will try to copy and paste code from the HTML output file. This is a bad idea. The HTML document uses special characters to make the output look pretty, but these characters don't actually work as plain text in an R Notebook. The same applies to things copied and pasted from a Word document or another website. If you need to copy and paste code, be sure to find the plain text R Notebook file (the one with the .Rmd extension here in RStudio) and copy and paste from that.
 
 
-## Conclusion
+## Conclusion {#rmark-conclusion}
 
 That's it! There wasn't too much you were asked to do for this assignment that will actually show up in the HTML output. (Make sure you did do the three things that were asked of you however: one was adding your name and the date to the YAML header, one was typing something in the blue answer box, and the last was to make a section header appear properly.) As you gain confidence and as we move into more serious stats material, you will be asked to do a lot more.
 
 
-### Preparing and submitting your assignment
+### Preparing and submitting your assignment {#rmark-prep}
 
 
 If you look in your project folder, you should see three files:

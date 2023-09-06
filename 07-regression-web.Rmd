@@ -31,7 +31,7 @@ install.packages("broom")
 
 Check the upper-right corner in RStudio to make sure you're in your `intro_stats` project. Then click on the following link to download this chapter as an R notebook file (`.Rmd`).
 
-<a href = "https://vectorposse.github.io/intro_stats/chapter_downloads/07-regression.Rmd" download>https://vectorposse.github.io/intro_stats/chapter_downloads/07-regression.Rmd</a>
+<a href = "https://jingsai.github.io/intro_stats/chapter_downloads/07-regression.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/07-regression.Rmd</a>
 
 Once the file is downloaded, move it to your project folder in RStudio and open it there.
 

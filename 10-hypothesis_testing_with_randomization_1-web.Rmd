@@ -27,7 +27,7 @@ There are no new packages used in this chapter.
 
 Check the upper-right corner in RStudio to make sure you're in your `intro_stats` project. Then click on the following link to download this chapter as an R notebook file (`.Rmd`).
 
-<a href = "https://vectorposse.github.io/intro_stats/chapter_downloads/10-hypothesis_testing_with_randomization_1.Rmd" download>https://vectorposse.github.io/intro_stats/chapter_downloads/10-hypothesis_testing_with_randomization_1.Rmd</a>
+<a href = "https://jingsai.github.io/intro_stats/chapter_downloads/10-hypothesis_testing_with_randomization_1.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/10-hypothesis_testing_with_randomization_1.Rmd</a>
 
 Once the file is downloaded, move it to your project folder in RStudio and open it there.
 
@@ -56,7 +56,7 @@ We return to the sex discrimination experiment from the last chapter. We are int
 
 The approach we used in Part 2 of "Introduction to randomization" was to assume that the two variables `decision` and `sex` were independent. From that assumption, we were able to compare the observed difference in promotion percentages between males and females from the actual data to the distribution of random values obtained by randomization. When the observed difference was far enough away from zero, we concluded that the assumption of independence was probably false, giving us evidence that the two variables were associated after all.
 
-This logic is formalized into a sequence of steps known as a *hypothesis test*. In this section, we will introduce a rubric for conducting a full and complete hypothesis test for the sex discrimination example. (This rubric also appears in the [Appendix](#appendix-rubric). If you need the rubric as a file, you can also download copies either as an `.Rmd` file [here](https://vectorposse.github.io/intro_stats/chapter_downloads/rubric_for_inference.Rmd) or as an `.nb.html` file [here](https://vectorposse.github.io/intro_stats/chapter_downloads/rubric_for_inference.nb.html).)
+This logic is formalized into a sequence of steps known as a *hypothesis test*. In this section, we will introduce a rubric for conducting a full and complete hypothesis test for the sex discrimination example. (This rubric also appears in the [Appendix](#appendix-rubric). If you need the rubric as a file, you can also download copies either as an `.Rmd` file [here](https://jingsai.github.io/intro_stats/chapter_downloads/rubric_for_inference.Rmd) or as an `.nb.html` file [here](https://jingsai.github.io/intro_stats/chapter_downloads/rubric_for_inference.nb.html).)
 
 A hypothesis test can be organized into five parts:
 
@@ -406,7 +406,7 @@ As always, use a significance level of $\alpha = 0.05$.
 Here is the data import:
 
 ```{r}
-ucb_admit <- read_csv("https://vectorposse.github.io/intro_stats/data/ucb_admit.csv",
+ucb_admit <- read_csv("https://jingsai.github.io/intro_stats/data/ucb_admit.csv",
                       col_types = list(
                           Admit = col_factor(),
                           Gender = col_factor(),

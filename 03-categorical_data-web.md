@@ -1,7 +1,7 @@
 # Categorical data {#categorical}
 
 <!-- Please don't mess with the next few lines! -->
-<style>h5{font-size:2em;color:#0000FF}h6{font-size:1.5em;color:#0000FF}div.answer{margin-left:5%;border:1px solid #0000FF;border-left-width:10px;padding:25px} div.summary{background-color:rgba(30,144,255,0.1);border:3px double #0000FF;padding:25px}</style>`r options(scipen=999)`<p style="color:#ffffff">`r intToUtf8(c(50,46,48))`</p>
+<style>h5{font-size:2em;color:#0000FF}h6{font-size:1.5em;color:#0000FF}div.answer{margin-left:5%;border:1px solid #0000FF;border-left-width:10px;padding:25px} div.summary{background-color:rgba(30,144,255,0.1);border:3px double #0000FF;padding:25px}</style><p style="color:#ffffff">2.0</p>
 <!-- Please don't mess with the previous few lines! -->
 
 ::: {.summary}
@@ -50,9 +50,36 @@ At the end of the assignment, you will "Restart R and Run All Chunks" once again
 
 We load the `tidyverse` package since it also loads the `ggplot2` package that we'll use throughout the course to make graphs. It also loads several other packages, for example, one called `dplyr` to give us a command called `mutate`, and another called `forcats` to give us `as_factor`. (These will all be explained later.) The `janitor` package gives us the `tabyl` command for creating nice tables.  Finally, We load the `palmerpenguins` package to work with the penguin data.
 
-```{r}
+
+```r
 library(tidyverse)
+```
+
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
+
+```r
 library(janitor)
+```
+
+```
+## 
+## Attaching package: 'janitor'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     chisq.test, fisher.test
+```
+
+```r
 library(palmerpenguins)
 ```
 
@@ -86,16 +113,43 @@ Please write up your answer here.
 
 R uses the term "factor variable" to refer to a categorical variable. Look at the structure of the `penguins` data below.
 
-```{r}
+
+```r
 str(penguins)
+```
+
+```
+## tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+##  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+##  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+##  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+##  $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+##  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
 ```
 
 The categorical variables `species`, `island`, and `sex` are coded correctly as factor variables.
 
 The `tidyverse` package offers a function called `glimpse` that effectively does the same thing as `str`. We'll use `glimpse` throughout the rest of the course.
 
-```{r}
+
+```r
 glimpse(penguins)
+```
+
+```
+## Rows: 344
+## Columns: 8
+## $ species           <fct> Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+## $ island            <fct> Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+## $ bill_length_mm    <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+## $ bill_depth_mm     <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+## $ flipper_length_mm <int> 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+## $ body_mass_g       <int> 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+## $ sex               <fct> male, female, female, NA, female, male, female, male…
+## $ year              <int> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
 ```
 
 ##### Exercise 2 {-}
@@ -119,8 +173,15 @@ If you need to summarize a single categorical variable, a *frequency table* usua
 
 We can use the `table` command:
 
-```{r}
+
+```r
 table(penguins$species)
+```
+
+```
+## 
+##    Adelie Chinstrap    Gentoo 
+##       152        68       124
 ```
 
 Recall that the dollar sign means to grab the variable `species` from the tibble `penguins`.
@@ -131,34 +192,68 @@ You can also generate a *relative frequency table* which is a table that uses pr
 
 The `table` command stops being convenient if you want proportions instead of counts. Instead, we will use the `tabyl` command from the `janitor` package that was loaded near the top of the chapter. The syntax for this command is a little different. The tibble goes first, followed by a comma, followed by the variable you want to summarize:
 
-```{r}
+
+```r
 tabyl(penguins, species)
+```
+
+```
+##    species   n   percent
+##     Adelie 152 0.4418605
+##  Chinstrap  68 0.1976744
+##     Gentoo 124 0.3604651
 ```
 
 Now you get both counts and proportions. Note that in the output above, it's a little misleading to call the last column "percent". These are actually proportions, and we would have to multiply by 100 to get percentages.
 
 It's usually nice to have the column totals. We can achieve that by using an `adorn` function to get them as follows:
 
-```{r}
+
+```r
 tabyl(penguins, species) %>%
   adorn_totals()
+```
+
+```
+##    species   n   percent
+##     Adelie 152 0.4418605
+##  Chinstrap  68 0.1976744
+##     Gentoo 124 0.3604651
+##      Total 344 1.0000000
 ```
 
 We'll always include the totals at the bottom.
 
 If you really want percentages, we can use a different `adorn` function:
 
-```{r}
+
+```r
 tabyl(penguins, species) %>%
     adorn_pct_formatting()
 ```
 
+```
+##    species   n percent
+##     Adelie 152   44.2%
+##  Chinstrap  68   19.8%
+##     Gentoo 124   36.0%
+```
+
 Again, we'll also include `adorn_totals` so that we get the column totals.
 
-```{r}
+
+```r
 tabyl(penguins, species) %>%
     adorn_totals() %>%
     adorn_pct_formatting()
+```
+
+```
+##    species   n percent
+##     Adelie 152   44.2%
+##  Chinstrap  68   19.8%
+##     Gentoo 124   36.0%
+##      Total 344  100.0%
 ```
 
 The syntax above looks a little confusing with the unusual `%>%` symbols everywhere. You will learn more about that weird set of symbols in a later chapter. For now, you can just copy and paste this code and make any necessary changes to the tibble and/or variables names as needed.
@@ -169,7 +264,8 @@ Use the `tabyl` command as above to create a frequency table for the sex of the 
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to create a frequency table for sex
 ```
 
@@ -191,7 +287,8 @@ Now create a relative frequency table for sex that reports percentages and not p
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here that reports percentages instead of proportions
 ```
 
@@ -225,10 +322,13 @@ In an introductory course, we won't get too fancy with these graphs. But be awar
 
 It will be easier to explain the `ggplot` syntax in the context of specific graph types, so let's create a bar chart for species.
 
-```{r}
+
+```r
 ggplot(penguins, aes(x = species)) +
     geom_bar()
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 We'll walk through this syntax step by step.
 
@@ -238,10 +338,13 @@ We'll walk through this syntax step by step.
 
 This can be modified somewhat to give proportions (relative frequencies) on the y-axis instead of counts. Unfortunately, the `ggplot` syntax is not very transparent here. My recommendation is to copy and paste the code below if you need to make a relative frequency bar chart in the future, making the necessary changes to the tibble and variable names, of course.
 
-```{r}
+
+```r
 ggplot(penguins, aes(x = species, y = ..prop.., group = 1)) +
     geom_bar()
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 These bar charts are the graphical analogues of a frequency table and a relative frequency table, respectively.
 
@@ -280,9 +383,18 @@ Most research questions that involve two or more variables are fundamentally que
 
 Let's check the contingency table. The `tabyl` command will place the first variable listed across the rows and the second one listed down the columns. Since we always include column totals, we want the predictor variable to be the column variable so we can see how the predictor groups are distributed in the data. **Always list the response variable first**.
 
-```{r}
+
+```r
 tabyl(penguins, sex, species) %>%
   adorn_totals()
+```
+
+```
+##     sex Adelie Chinstrap Gentoo
+##  female     73        34     58
+##    male     73        34     61
+##    <NA>      6         0      5
+##   Total    152        68    124
 ```
 
 Each column is a group, and our question is whether the distribution of sexes in each column is similar.
@@ -303,19 +415,37 @@ Please write up your answer here.
 
 A more fair way to compare across columns is to create relative frequencies. We can do this with a slightly different `adorn` command. The following code says that we want to compute column proportions (yes, I know the command is called `adorn_percentages`, but these are proportions):
 
-```{r}
+
+```r
 tabyl(penguins, sex, species) %>%
     adorn_totals() %>%
     adorn_percentages("col")
 ```
 
+```
+##     sex     Adelie Chinstrap     Gentoo
+##  female 0.48026316       0.5 0.46774194
+##    male 0.48026316       0.5 0.49193548
+##    <NA> 0.03947368       0.0 0.04032258
+##   Total 1.00000000       1.0 1.00000000
+```
+
 If we actually want percentages, we need one more line of code. This command---`adorn_pct_formatting`---is the same as we used before with frequency tables.
 
-```{r}
+
+```r
 tabyl(penguins, sex, species) %>%
     adorn_totals() %>%
     adorn_percentages("col") %>%
     adorn_pct_formatting()
+```
+
+```
+##     sex Adelie Chinstrap Gentoo
+##  female  48.0%     50.0%  46.8%
+##    male  48.0%     50.0%  49.2%
+##    <NA>   3.9%      0.0%   4.0%
+##   Total 100.0%    100.0% 100.0%
 ```
 
 Now we can see that each column adds up to 100%. In other words, each species is now on equal footing, and only the distribution of sexes within each group matters.
@@ -366,7 +496,8 @@ Create a contingency table with percentages. List `species` first, followed by `
 ::: {.answer}
 
 
-```{r}
+
+```r
 # Add code here to create a contingency table with percentages.
 ```
 
@@ -387,10 +518,13 @@ Please write up your answer here.
 
 A somewhat effective way to display two categorical variables is with a side-by-side bar chart. Here is the `ggplot` code for the relationship between `sex` and `species`.
 
-```{r}
+
+```r
 ggplot(penguins, aes(fill = sex, x = species)) +
     geom_bar(position = "dodge")
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 This is somewhat different from the first `ggplot` example you saw above, so let's take a moment to go through it.
 
@@ -400,10 +534,13 @@ This is somewhat different from the first `ggplot` example you saw above, so let
 
 Another unusual feature is the argument `position = "dodge"` in the `geom_bar` layer. Let's see what happens if we remove it.
 
-```{r}
+
+```r
 ggplot(penguins, aes(fill = sex, x = species)) + 
     geom_bar()
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 We get a stacked bar chart! This is another popular way of displaying two categorical variables, but we don't tend to prefer it. Notice how difficult it is to compare the number of females across species; since there is no common baseline for the red segments of each bar, it is harder to determine which ones are bigger or smaller. (In this case, it's fairly clear, but there are plenty of data sets for which the counts might be a lot closer.)
 
@@ -411,10 +548,13 @@ So let's agree to use side-by-side bar charts. There is still one aspect of the 
 
 This is the same issue we identified in an exercise above. To fix this problem, a better option here would be to use relative frequencies (i.e., proportions/percentages within each group) instead of counts on the y-axis. This is analogous to using proportions/percentages in a contingency table. Unfortunately, it is rather difficult to do this with `ggplot`. A compromise is available: by using `position = fill`, you can create a stacked bar chart that scales every group to 100%. Making comparisons across groups can still be hard, as explained above for any kind of stacked bar chart, but it works okay if there are only two categories in the response variable (as is almost the case with `sex` here, although the missing data distorts things a little at the bottom).
 
-```{r}
+
+```r
 ggplot(penguins, aes(fill = sex, x = species)) +
     geom_bar(position = "fill")
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 This graph does correctly show that the sexes are pretty much equally balances across all three species.
 
@@ -424,7 +564,8 @@ Using `species` and `island`, create a side-by-side bar chart. Be careful, thoug
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to make a side-by-side bar chart.
 ```
 
@@ -445,8 +586,13 @@ Please write up your answer here.
 
 As mentioned earlier, there are situations where a categorical variable is not recorded in R as a factor variable. Let's look at the `year` variable:
 
-```{r}
+
+```r
 glimpse(penguins$year)
+```
+
+```
+##  int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
 ```
 
 These appear as integers. Yes, years are whole numbers, but why might this variable be treated as categorical data and not numerical data?
@@ -457,7 +603,8 @@ Use the `tabyl` command to create a frequency table for `year`.
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to make a frequency table for year.
 ```
 
@@ -481,10 +628,25 @@ The code below uses a command called `mutate` that takes an old variable and cre
 
 Observe the effect below:
 
-```{r}
+
+```r
 penguins <- penguins %>%
     mutate(year_fct = as_factor(year))
 glimpse(penguins)
+```
+
+```
+## Rows: 344
+## Columns: 9
+## $ species           <fct> Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+## $ island            <fct> Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+## $ bill_length_mm    <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+## $ bill_depth_mm     <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+## $ flipper_length_mm <int> 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+## $ body_mass_g       <int> 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+## $ sex               <fct> male, female, female, NA, female, male, female, male…
+## $ year              <int> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
+## $ year_fct          <fct> 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
 ```
 
 ##### Exercise 10(a) {-}
@@ -493,7 +655,8 @@ Make a contingency table of the species measured in each year using counts. Use 
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to make a contingency table for species and year with counts.
 ```
 
@@ -505,7 +668,8 @@ Make a contingency table of the species measured in each year using column perce
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to make a contingency table for species and year with percentages.
 ```
 
@@ -526,14 +690,18 @@ Please write up your answer here.
 
 Let's go back to the first relative frequency bar chart from this chapter.
 
-```{r}
+
+```r
 ggplot(penguins, aes(x = species, y = ..prop.., group = 1)) +
     geom_bar()
 ```
 
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+
 The variable name `species` is already informative, but the y-axis is labeled with "prop". Also note that this graph could use a title. We can do all this with `labs` (for labels). Observe:
 
-```{r}
+
+```r
 ggplot(penguins, aes(x = species, y = ..prop.., group = 1)) +
     geom_bar() +
     labs(title = "Distribution of species",
@@ -541,18 +709,23 @@ ggplot(penguins, aes(x = species, y = ..prop.., group = 1)) +
          x = "Species")
 ```
 
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+
 ##### Exercise 11 {-}
 
 Modify the following side-by-side bar chart by adding a title and labels for both the fill variable and the x-axis variable. (Hint: you can use `fill = sex` inside the `labs` command just like you used `title`, `y`, and `x`.)
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Modify the following side-by-side bar chart by adding a title and 
 # labels for both the x-axis and the fill variable.
 ggplot(penguins, aes(fill = sex, x = species)) +
     geom_bar(position = "dodge")
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 :::
 
@@ -576,7 +749,8 @@ This raises two questions:
 
 To answer the first question, we show you how to create your own tibble. Here is the syntax:
 
-```{r}
+
+```r
 penguin_species_table <- tibble(
     species = c("Adelie", "Chinstrap", "Gentoo"),
     count = c(152, 68, 124)
@@ -584,14 +758,26 @@ penguin_species_table <- tibble(
 penguin_species_table
 ```
 
+```
+## # A tibble: 3 × 2
+##   species   count
+##   <chr>     <dbl>
+## 1 Adelie      152
+## 2 Chinstrap    68
+## 3 Gentoo      124
+```
+
 Basically, the `tibble` command creates a new tibble. Then each column of data must be entered manually as a "vector" using the `c` to group all the data values together for each column. Be careful about the placement of quotation marks, commas, and parentheses.
 
 Once we have our summary data, we want to make a bar chart. But this won't work:
 
-```{r}
+
+```r
 ggplot(penguin_species_table, aes(x = species)) +
     geom_bar()
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 ##### Exercise 12 {-}
 
@@ -607,10 +793,13 @@ Please write up your answer here.
 
 Instead, we need to use `geom_col`. This works a lot like `geom_bar` except that it also requires a `y` value in its aesthetics to force the command to look for the counts in some other variable in the data.
 
-```{r}
+
+```r
 ggplot(penguin_species_table, aes(x = species, y = count)) +
     geom_col()
 ```
+
+<img src="03-categorical_data-web_files/figure-html/unnamed-chunk-31-1.png" width="672" />
 
 ##### Exercise 13(a) {-}
 
@@ -618,7 +807,8 @@ Use the `tabyl` command to create a frequency table for `island`.
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to create a frequency table for island
 ```
 
@@ -630,7 +820,8 @@ Use the `tibble` command to create a new tibble manually that contains the frequ
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to create a tibble with frequency data for island
 ```
 
@@ -642,7 +833,8 @@ Use `ggplot` with `geom_col` to create a bar chart for island.
 
 ::: {.answer}
 
-```{r}
+
+```r
 # Add code here to create a bar chart for island
 ```
 
@@ -654,25 +846,61 @@ Sometimes we come across summary data instead of raw data. We've learned how to 
 
 We'll continue with our example `penguin_species_table`, which we'll reprint here for reference:
 
-```{r}
+
+```r
 penguin_species_table
+```
+
+```
+## # A tibble: 3 × 2
+##   species   count
+##   <chr>     <dbl>
+## 1 Adelie      152
+## 2 Chinstrap    68
+## 3 Gentoo      124
 ```
 
 From this table, we know what the raw data for this variable should look like: there should be 152 rows that say "Adelie," 68 rows that say "Chinstrap," and 124 rows that say "Gentoo." It would be very annoying, though, to make that whole tibble by hand. Fortunately, there are R tools that will create it for us.
 
 The first thing we will need to do is turn our tibble into a tabyl. (I would like to apologize for how ridiculous that sentence sounds.)
 
-```{r}
+
+```r
 penguin_species_tabyl <- as_tabyl(penguin_species_table)
 penguin_species_tabyl
 ```
 
+```
+##    species count
+##     Adelie   152
+##  Chinstrap    68
+##     Gentoo   124
+```
+
 The hero of the day is the function `uncount` from the `tidyr` package:
 
-```{r}
+
+```r
 penguin_species_raw <- penguin_species_tabyl %>%
   uncount(count)
 penguin_species_raw
+```
+
+```
+## # A tibble: 344 × 1
+##    species
+##    <chr>  
+##  1 Adelie 
+##  2 Adelie 
+##  3 Adelie 
+##  4 Adelie 
+##  5 Adelie 
+##  6 Adelie 
+##  7 Adelie 
+##  8 Adelie 
+##  9 Adelie 
+## 10 Adelie 
+## # … with 334 more rows
 ```
 
 Click through the rows of this table and you'll see that it's exactly what we wanted: "Adelie" is repeated 152 times, "Chinstrap" is repeated 68 times, and "Gentoo" is repeated 124 times. Neat!
@@ -692,7 +920,8 @@ Again, we can imagine what the raw data would look like: there would be 73 rows 
 
 We can start by building a tibble with this information in the same way we built the tibble of penguin species counts. Note that the species labels now become the column headers.
 
-```{r}
+
+```r
 penguin_species_sex_table <- tibble(
   sex = c("female", "male"),
   Adelie = c(73, 73),
@@ -702,34 +931,76 @@ penguin_species_sex_table <- tibble(
 penguin_species_sex_table
 ```
 
+```
+## # A tibble: 2 × 4
+##   sex    Adelie Chinstrap Gentoo
+##   <chr>   <dbl>     <dbl>  <dbl>
+## 1 female     73        34     58
+## 2 male       73        34     61
+```
+
 Once again, we'll want to turn this tibble into a tabyl:
 
-```{r}
+
+```r
 penguin_species_sex_tabyl <- as_tabyl(penguin_species_sex_table)
 penguin_species_sex_tabyl
 ```
 
+```
+##     sex Adelie Chinstrap Gentoo
+##  female     73        34     58
+##    male     73        34     61
+```
+
 In order for the `uncount` function to work correctly, we need to have all the counts in a single column, but since this is a contingency table, our counts are spread out across several columns. To solve this problem, we'll need to "pivot" the columns, turning them into rows. The command is called `pivot_longer`. (There is also a `pivot_wider` command that turns rows into columns, but we won't need that one.)
 
-```{r}
+
+```r
 penguin_species_sex_tabyl %>%
   pivot_longer(cols = c("Adelie", "Chinstrap", "Gentoo"))
 ```
 
+```
+## # A tibble: 6 × 3
+##   sex    name      value
+##   <chr>  <chr>     <dbl>
+## 1 female Adelie       73
+## 2 female Chinstrap    34
+## 3 female Gentoo       58
+## 4 male   Adelie       73
+## 5 male   Chinstrap    34
+## 6 male   Gentoo       61
+```
+
 If we want a little more control over the names of the newly created columnds, we can add those as follows:
 
-```{r}
+
+```r
 penguin_species_sex_tabyl %>%
   pivot_longer(cols = c("Adelie", "Chinstrap", "Gentoo"),
                names_to = "species",
                values_to = "count")
 ```
 
+```
+## # A tibble: 6 × 3
+##   sex    species   count
+##   <chr>  <chr>     <dbl>
+## 1 female Adelie       73
+## 2 female Chinstrap    34
+## 3 female Gentoo       58
+## 4 male   Adelie       73
+## 5 male   Chinstrap    34
+## 6 male   Gentoo       61
+```
+
 
 Now our data is in the form that `uncount` knows how to deal with. And indeed, we can assemble all these steps together into a pipeline. First, we should build the tibble. Then, we should turn the tibble into a tabyl (sorry), then `pivot` the tabyl, and finally `uncount` to get back to the raw data. Finally, we should store the result as a new tibble. 
 Here are all the steps put together:
 
-```{r}
+
+```r
 penguin_species_sex_table <- tibble(
   sex = c("female", "male"),
   Adelie = c(73, 73),
@@ -744,6 +1015,23 @@ penguin_species_sex_table %>%
   uncount(count) -> penguin_species_sex_raw
 
 penguin_species_sex_raw
+```
+
+```
+## # A tibble: 333 × 2
+##    sex    species
+##    <chr>  <chr>  
+##  1 female Adelie 
+##  2 female Adelie 
+##  3 female Adelie 
+##  4 female Adelie 
+##  5 female Adelie 
+##  6 female Adelie 
+##  7 female Adelie 
+##  8 female Adelie 
+##  9 female Adelie 
+## 10 female Adelie 
+## # … with 323 more rows
 ```
 
 Indeed, this new tibble looks just like how we wanted it to look.
