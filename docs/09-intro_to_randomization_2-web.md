@@ -32,7 +32,7 @@ install.packages("infer")
 
 Check the upper-right corner in RStudio to make sure you're in your `intro_stats` project. Then click on the following link to download this chapter as an R notebook file (`.Rmd`).
 
-<a href = "https://vectorposse.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd" download>https://vectorposse.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd</a>
+<a href = "https://jingsai.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd</a>
 
 Once the file is downloaded, move it to your project folder in RStudio and open it there.
 
@@ -700,7 +700,7 @@ The following code will download admissions data from the six largest graduate d
 
 
 ```r
-ucb_admit <- read_csv("https://vectorposse.github.io/intro_stats/data/ucb_admit.csv",
+ucb_admit <- read_csv("https://jingsai.github.io/intro_stats/data/ucb_admit.csv",
                       col_types = list(
                           Admit = col_factor(),
                           Gender = col_factor(),

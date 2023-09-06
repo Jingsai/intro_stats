@@ -23,7 +23,7 @@
 <meta name="author" content="Sean Raleigh, Westminster College (Salt Lake City, UT)" />
 
 
-<meta name="date" content="2023-09-04" />
+<meta name="date" content="2023-09-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1107,7 +1107,7 @@ install.packages(&quot;infer&quot;)</code></pre>
 <div id="randomization2-download" class="section level3 hasAnchor" number="9.1.2">
 <h3><span class="header-section-number">9.1.2</span> Download the R notebook file<a href="randomization2.html#randomization2-download" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Check the upper-right corner in RStudio to make sure you’re in your <code>intro_stats</code> project. Then click on the following link to download this chapter as an R notebook file (<code>.Rmd</code>).</p>
-<p><a href = "https://vectorposse.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd" download>https://vectorposse.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd</a></p>
+<p><a href = "https://jingsai.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/09-intro_to_randomization_2.Rmd</a></p>
 <p>Once the file is downloaded, move it to your project folder in RStudio and open it there.</p>
 </div>
 <div id="randomization2-restart" class="section level3 hasAnchor" number="9.1.3">
@@ -1497,7 +1497,7 @@ install.packages(&quot;infer&quot;)</code></pre>
 <h2><span class="header-section-number">9.10</span> Your turn<a href="randomization2.html#randomization2-your-turn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this section, you’ll explore another famous data set related to the topic of gender discrimination. (Also from the 1970s!)</p>
 <p>The following code will download admissions data from the six largest graduate departments at the University of California, Berkeley in 1973. We’ve seen the <code>read_csv</code> command before, but we’ve added some extra stuff in there to make sure all the columns get imported as factor variables (rather than having to convert them ourselves later).</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="randomization2.html#cb455-1" tabindex="-1"></a>ucb_admit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://vectorposse.github.io/intro_stats/data/ucb_admit.csv&quot;</span>,</span>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="randomization2.html#cb455-1" tabindex="-1"></a>ucb_admit <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://jingsai.github.io/intro_stats/data/ucb_admit.csv&quot;</span>,</span>
 <span id="cb455-2"><a href="randomization2.html#cb455-2" tabindex="-1"></a>                      <span class="at">col_types =</span> <span class="fu">list</span>(</span>
 <span id="cb455-3"><a href="randomization2.html#cb455-3" tabindex="-1"></a>                          <span class="at">Admit =</span> <span class="fu">col_factor</span>(),</span>
 <span id="cb455-4"><a href="randomization2.html#cb455-4" tabindex="-1"></a>                          <span class="at">Gender =</span> <span class="fu">col_factor</span>(),</span>

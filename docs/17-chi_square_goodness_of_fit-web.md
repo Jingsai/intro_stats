@@ -27,7 +27,7 @@ There are no new packages used in this chapter.
 
 Check the upper-right corner in RStudio to make sure you're in your `intro_stats` project. Then click on the following link to download this chapter as an R notebook file (`.Rmd`).
 
-<a href = "https://vectorposse.github.io/intro_stats/chapter_downloads/17-chi_square_goodness_of_fit.Rmd" download>https://vectorposse.github.io/intro_stats/chapter_downloads/17-chi_square_goodness_of_fit.Rmd</a>
+<a href = "https://jingsai.github.io/intro_stats/chapter_downloads/17-chi_square_goodness_of_fit.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/17-chi_square_goodness_of_fit.Rmd</a>
 
 Once the file is downloaded, move it to your project folder in RStudio and open it there.
 
