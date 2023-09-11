@@ -52,6 +52,11 @@ https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_download
 
 <a href = "https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd" download>03-categorical_data.Rmd</a>
 
+[03-categorical_data.Rmd](https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd)
+
+[03-categorical_data.Rmd](https://jingsai.github.io/intro_stats/chapter_downloads/02-using_r_markdown.Rmd)
+
+
 The file is now likely sitting in a Downloads folder on your machine (or wherever you have set up for web files to download). If you have installed R and RStudio on your own machine, you will need to move the file from your Downloads folder into the `intro_stats` project directory you created at the end of the last chapter. (Again, if you haven't created the `intro_stats` project, please go back to Chapter 1 and follow the directions for doing that.) Moving files around is most easily done using File Explorer in Windows or the Finder in MacOS. If you are logged into RStudio Workbench instead, go to the Files tab and click the "Upload" button. From there, leave the first box alone ("Target directory"). Click the "Choose File" button and navigate to the folder on your machine containing the file `02_using-r-markdown.Rmd`. Select that file and click "OK" to upload the file. Then you will be able to open the file in RStudio simply by clicking on it.
 
 If you are reading this text online in the browser, be aware that there are several instructions below that won't make any sense because you're not looking at the plain text file with all the code in it. Much of the material in this book can be read and enjoyed online, but the real learning comes from downloading the chapter files (starting with Chapter 2---this one) and working through them in RStudio.
