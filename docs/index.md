@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Statistics: an integrated textbook and workbook using R"
-author: "Sean Raleigh, Westminster College (Salt Lake City, UT)"
+author: "Sean Raleigh, Westminster University (Salt Lake City, UT)"
 date: "2023-09-05"
 site: bookdown::bookdown_site
 documentclass: book
@@ -124,6 +124,6 @@ The final chapters of the book (Chapters 15--22) are simply applications of infe
 
 I hope you enjoy the textbook. You can provide feedback two ways:
 
-1. The preferred method is to file an issue on the Github page: https://github.com/VectorPosse/intro_stats/issues
+1. The preferred method is to file an issue on the Github page: https://github.com/jingsai/intro_stats/issues
 
-2. Alternatively, send me an email: [sraleigh\@westminstercollege.edu](mailto:sraleigh@westminstercollege.edu){.email}
+2. Alternatively, send me an email: [jliang\@westminsteru.edu](mailto:jliang@westminsteru.edu){.email}
