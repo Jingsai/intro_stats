@@ -1,14 +1,14 @@
 ---
 title: "Introduction to Statistics: an integrated textbook and workbook using R"
 author: "Sean Raleigh, Westminster University (Salt Lake City, UT)"
-date: "2023-09-05"
+date: "2023-09-11"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: VectorPosse/intro_stats
-url: https://vectorposse.github.io/intro_stats/
+github-repo: jingsai/intro_stats
+url: https://jingsai.github.io/intro_stats/
 description: "This is a full-semester introductory statistics course using a workbook approach that incorporates all the course material into downloadable R notebooks."
 ---
 
@@ -19,7 +19,7 @@ description: "This is a full-semester introductory statistics course using a wor
 
 Welcome to statistics!
 
-If you want, you can also download this book as a <a href="https://vectorposse.github.io/intro_stats/intro_stats.pdf" target="_blank">PDF</a> or <a href="https://vectorposse.github.io/intro_stats/intro_stats.epub" target="_blank">EPUB</a> file. Be aware that the print versions are missing some of the richer formatting of the online version. Besides, the recommended way to work through this material is to download the R notebook file (`.Rmd`) at the top of each chapter and work through it in RStudio.
+If you want, you can also download this book as a <a href="https://jingsai.github.io/intro_stats/intro_stats.pdf" target="_blank">PDF</a> or <a href="https://jingsai.github.io/intro_stats/intro_stats.epub" target="_blank">EPUB</a> file. Be aware that the print versions are missing some of the richer formatting of the online version. Besides, the recommended way to work through this material is to download the R notebook file (`.Rmd`) at the top of each chapter and work through it in RStudio.
 
 
 ## History and goals {-#intro-history}

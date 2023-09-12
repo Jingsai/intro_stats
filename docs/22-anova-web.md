@@ -30,7 +30,11 @@ install.packages("quantreg")
 
 Check the upper-right corner in RStudio to make sure you're in your `intro_stats` project. Then click on the following link to download this chapter as an R notebook file (`.Rmd`).
 
-<a href = "https://jingsai.github.io/intro_stats/chapter_downloads/22-anova.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/22-anova.Rmd</a>
+<a  target="_blank" href = "https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/22-anova.Rmd"
+      Download = "22-anova.Rmd">
+      <button type = "button"> Right Click and Save the link as a File </button>
+</a>
+
 
 Once the file is downloaded, move it to your project folder in RStudio and open it there.
 

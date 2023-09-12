@@ -595,4 +595,3 @@ conclusion-23
 preparing-and-submitting-your-assignment-6
 appendix-rubric
 appendix-concordance
-is-this-a-new-section
