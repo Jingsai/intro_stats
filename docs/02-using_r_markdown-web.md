@@ -42,21 +42,7 @@ install.packages("tidyverse")
 
 You need to download this chapter as an R Notebook (`.Rmd`) file. Please click the following link to do so:
 
-<a href = "https://jingsai.github.io/intro_stats/chapter_downloads/02-using_r_markdown.Rmd" download>https://jingsai.github.io/intro_stats/chapter_downloads/02-using_r_markdown.Rmd</a>
-
-<a href = "https://cs.westminsteru.edu/~jingsai/courses/DATA220/rmodules/02-using_r_markdown.rmd"   download>https://cs.westminsteru.edu/~jingsai/courses/DATA220/rmodules/02-using_r_markdown.rmd</a>
-
-https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/02-using_r_markdown.Rmd
-
-https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd
-
-<a href = "https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd" download>03-categorical_data.Rmd</a>
-
-[03-categorical_data.Rmd](https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd)
-
-[03-categorical_data.Rmd](https://jingsai.github.io/intro_stats/chapter_downloads/02-using_r_markdown.Rmd)
-
-<a href = "https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd" download="03-categorical_data.Rmd">03-categorical_data.Rmd</a>
+<a href = "./chapter_downloads/03-categorical_data.Rmd" download="03-categorical_data.Rmd">03-categorical_data.Rmd</a>
 
 <a href = "https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd"
       Download = "03-categorical_data.Rmd">
