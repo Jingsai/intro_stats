@@ -42,6 +42,8 @@ install.packages("tidyverse")
 
 You need to download this chapter as an R Notebook (`.Rmd`) file. Please click the following link to do so:
 
+<a href = "./chapter_downloads/03-categorical_data.Rmd">03-categorical_data.Rmd</a>
+
 <a href = "./chapter_downloads/03-categorical_data.Rmd" download="03-categorical_data.Rmd">03-categorical_data.Rmd</a>
 
 <a href = "https://raw.githubusercontent.com/Jingsai/intro_stats/main/docs/chapter_downloads/03-categorical_data.Rmd"
