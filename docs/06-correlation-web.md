@@ -263,7 +263,7 @@ Create the same kind of graph as above, but for `involact`. (Again, go back and 
 
 
 ```r
-# Add code here to create a plot of race
+# Add code here to create a plot of involact
 ```
 
 :::

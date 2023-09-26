@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Statistics: an integrated textbook and workbook using R"
 author: "Sean Raleigh, Westminster University (Salt Lake City, UT)"
-date: "2023-09-11"
+date: "2023-09-26"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
